@@ -28,6 +28,7 @@ var requestOnRefreshStream = refreshClickStream
   });
 
 var requestStream = startupRequestStream.merge(requestOnRefreshStream);
+//合并，其实是或者的关系，
 var responseStream = requestStream
     .mergeMap(requestUrl =>
         Rx.Observable.fromPromise(fetch(requestUrl).then(response=>response.json()))
